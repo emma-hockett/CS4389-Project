@@ -1,7 +1,7 @@
 ### CS4389-Project
 CS 4389 : Data and Application Security Project Repository
 
-##SETTING UP THE DATABASE 
+## SETTING UP THE DATABASE 
 1. Install MySQL
 2. Upload create.sql and run it via the lightning bolt on the right of the save button
  ![image](https://github.com/user-attachments/assets/2959d91f-603f-4b0d-b093-42dfbf633144)
