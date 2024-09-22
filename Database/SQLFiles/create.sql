@@ -43,7 +43,7 @@ CREATE TABLE Store (
         Street varchar(20) NOT NULL,
         City varchar(20) NOT NULL,
         Zipcode int NOT NULL, 
-        State varchar(20) NOT NULL, 
+        State varchar(2) NOT NULL, 
 		PRIMARY KEY(StoreID)
 );
 
