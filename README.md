@@ -1,4 +1,4 @@
-### CS4389-Project
+# CS4389-Project
 CS 4389 : Data and Application Security Project Repository
 
 ## SETTING UP THE DATABASE 
@@ -14,4 +14,8 @@ CS 4389 : Data and Application Security Project Repository
 ![image](https://github.com/user-attachments/assets/60512cdf-220d-440a-b3c3-0cca3787dea4)
 
 9. **Disclaimer:** You may have to change your backslashes to forward slashes for MySQL to not throw a fit + make sure your path uses single quotes instead of double quotes
-10. Repeat this step for each csv file
+11. Repeat this step for each csv file
+12. If you'd like to see tables in MySQL, make a new sql file and type the following, replacing 'Tablename' with the desired table name:  
+
+    USE cubebuster;  
+    SELECT * FROM Tablename;  
