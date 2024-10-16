@@ -8,7 +8,7 @@ CREATE TABLE Movie (
         movieYear int NOT NULL,
         Genre varchar(15) NOT NULL,
         Director varchar(20) NOT NULL,
-        Price Decimal(3,2) NOT NULL,
+        Price Decimal(4,2) NOT NULL,
         Rating varchar(5) NOT NULL,
         Duration int NOT NULL,
         ImageAddress varchar(40),
