@@ -22,3 +22,21 @@ CS 4389 : Data and Application Security Project Repository
     >SELECT * FROM Tablename;
 - You can stop the database by typing this into cmd line  
     >quit
+
+## RUNNING THE WEBSITE
+1. Open one terminal and perform the sequence of commands:
+```
+cd website
+cd server
+npm start
+```
+
+2.  Open a second terminal and perform the sequence of commands:
+```
+cd website
+cd client
+npm run build
+npm run dev
+```
+
+3. Copy and paste the local host link given in your browser to view the website.
