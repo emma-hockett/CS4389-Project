@@ -42,6 +42,8 @@ const MovieGrid = () => {
     </div>
   );
 
+  console.log('Home component rendered'); // adding some test code, feel free to remove
+
   return (
     
     <div>
