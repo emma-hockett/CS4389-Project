@@ -4,11 +4,11 @@ USE cubebuster;
 
 CREATE TABLE Movie (
         MovieID char(9) NOT NULL,
-        Title varchar(40) NOT NULL,
+        Title varchar(60) NOT NULL,
         movieYear int NOT NULL,
         Genre varchar(15) NOT NULL,
-        Director varchar(20) NOT NULL,
-        Price Decimal(3,2) NOT NULL,
+        Director varchar(40) NOT NULL,
+        Price Decimal(5,2) NOT NULL,
         PGRating varchar(5) NOT NULL,
         Rating Decimal(2,1),
         Duration int NOT NULL,
