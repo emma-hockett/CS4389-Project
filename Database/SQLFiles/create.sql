@@ -3,13 +3,14 @@ CREATE DATABASE cubebuster;
 USE cubebuster;
 
 CREATE TABLE Movie (
-        MovieID int NOT NULL AUTO_INCREMENT,
+        MovieID char(9) NOT NULL,
         Title varchar(40) NOT NULL,
         movieYear int NOT NULL,
         Genre varchar(15) NOT NULL,
         Director varchar(20) NOT NULL,
-        Price Decimal(4,2) NOT NULL,
-        Rating varchar(5) NOT NULL,
+        Price Decimal(3,2) NOT NULL,
+        PGRating varchar(5) NOT NULL,
+        Rating Decimal(2,1),
         Duration int NOT NULL,
         ImageAddress varchar(40),
         PRIMARY KEY(MovieID)
@@ -49,7 +50,7 @@ CREATE TABLE Store (
 );
 
 CREATE TABLE Request (
-        MovieID int NOT NULL,
+        MovieID char(9) NOT NULL,
         UserID int NOT NULL,
         StoreID int NOT NULL,
         Place int NOT NULL,
@@ -72,7 +73,7 @@ CREATE TABLE WorksAt (
 );
 
 CREATE TABLE InStock (
-        MovieID int NOT NULL,
+        MovieID char(9) NOT NULL,
         StoreID int NOT NULL,
         IsAvailable bool NOT NULL,
         Quantity int NOT NULL,
