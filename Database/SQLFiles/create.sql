@@ -1,6 +1,4 @@
-DROP DATABASE IF EXISTS cubebuster;
-CREATE DATABASE cubebuster;
-USE cubebuster;
+USE CubeBuster;
 
 CREATE TABLE Movie (
         MovieID char(9) NOT NULL,
