@@ -40,3 +40,8 @@ npm run dev
 ```
 
 3. Copy and paste the local host link given in your browser to view the website.
+
+## RUNNING THE SERVICES IN DOCKER
+Run the following command:
+ >docker compose up
+the client is bound at port 80 and server is bound at port 5000.

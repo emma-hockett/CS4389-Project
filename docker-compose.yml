@@ -1,0 +1,14 @@
+services:
+  server:
+    build: ./website/server
+    ports:
+      - 3000:5000
+
+  database:
+    build: ./Database
+
+  client:
+    build: ./website/client
+    ports:
+      - 3000:80
+
