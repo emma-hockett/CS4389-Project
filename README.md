@@ -44,4 +44,4 @@ npm run dev
 ## RUNNING THE SERVICES IN DOCKER
 Run the following command:
  >docker compose up
-the client is bound at port 80 and server is bound at port 5000.
+the client is bound at port 5000 and server is bound at port 5001.
