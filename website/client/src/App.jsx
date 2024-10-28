@@ -6,6 +6,8 @@ import Home from "./components/FeatMoviesList.jsx"
 import MoviePage from "./components/MoviesPage.jsx"
 import NotFound from "./components/NotFound.jsx"
 import Profile from "./components/Profile.jsx"
+import RentPage from "./components/RentPage.jsx"
+import Login from "./components/Login.jsx"
 
 function App() {
 
@@ -18,6 +20,8 @@ function App() {
         <Route path="/searchmovies" element={<MoviePage/>} />
         <Route path="*" element={<NotFound />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/req" element={<RentPage />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
       

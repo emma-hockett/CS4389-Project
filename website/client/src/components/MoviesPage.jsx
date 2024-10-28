@@ -1,6 +1,6 @@
 import Movie from "./Movie.jsx"
 import {useState} from "react"
-
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -52,19 +52,35 @@ const movies = [
         setFilteredResults(movies); 
       }
     };
-  
+    const navigate = useNavigate();
+    const handleClick = (img, title, genre, year, rating, price) => {
+      console.log('Navigating with:', { img, title, genre, year, rating, price });
+      navigate('/req', { 
+        state: { 
+          image: img, 
+          title, 
+          genre, 
+          year, 
+          rating, 
+          price 
+        } 
+      });
+    };
+    
 
     const renderMovieRow = (movieList) => (
       <div style={{ marginBottom: '30px' }}>
         <div style={styles.grid}>
           {movieList.map((movie) => (
-            <div key={movie.id} style={styles.movieItem}>
-              <Movie title={movie.title} image={movie.img} />
+            <div key={movie.id} style={styles.movieItem} >
+              <Movie title={movie.title} image={movie.img}  />
+              <button  onClick={() => handleClick(movie.img, movie.title, movie.genre, movie.year, movie.rating, movie.price)}>Rent for ${movie.price}</button>
             </div>
           ))}
         </div>
       </div>
     );
+  
   
     return (
       <div>

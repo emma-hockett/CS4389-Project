@@ -1,7 +1,7 @@
 // import { useState } from 'react'
 // import userProfile from '../assets/default-avatar.png'
 // import editButton from '../assets/editButton.png'
-// import './App.css'
+import './Profile.css'
 
 function Profile() {
 	
