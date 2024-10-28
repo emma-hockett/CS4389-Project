@@ -113,4 +113,58 @@ delete_req:BEGIN
 
 END //
 
+-- Procedure to return rented movies of a user
+-- Input: user_id 
+-- Ouput: Title, MovieID, Place, reqStatus, DueDate, ReqTime, balance (fees)
+CREATE PROCEDURE get_rentals (
+	IN custID int)
+rent_info:BEGIN
+	
+    SELECT  M.Title, R.MovieID, R.Place, R.reqStatus, R.DueDate, R.ReqTime, R.Balance
+    FROM Request R
+    JOIN Movie M ON R.MovieID = M.MovieID
+    WHERE cID = custID;
+END //
+
+-- Procedure to return profile of the user
+-- Inputs: userID
+-- Outputs: username, address, birthday, email
+CREATE PROCEDURE get_user (
+	IN custID int)
+user_info:BEGIN
+	
+    SELECT username, address, Bday, Email
+    FROM Costomer
+    WHERE cID = custID;
+
+END //
+
+-- Procedure to verify user-input email against stored email 
+-- Inputs: email (user-input)
+-- Outputs: Message: 'Success' or the condition that was not met
+CREATE PROCEDURE verifyEmail (
+	IN u_email varchar(20),
+	OUT status_message char(100))
+email_check:BEGIN
+    IF EXISTS (SELECT Email FROM Customer WHERE Email = u_email) THEN
+        SET status_message = 'Success.';
+    ELSE
+        SET status_message = 'Email not found.';
+    END IF;
+END //
+
+-- Procedure to verify user-input password against stored password
+-- Input: user input password
+-- output: message on whether password matches. 
+CREATE PROCEDURE verifyPassword(
+	IN u_password varchar(20),
+	OUT status_message char(100))
+password_check:BEGIN
+    IF EXISTS (SELECT userpswd FROM Customer WHERE userpswd = u_password) THEN
+        SET status_message = 'Success!';
+    ELSE
+        SET status_message = 'Incorrect Password. Try again.';
+    END IF;
+END //
+
 DELIMITER ;
