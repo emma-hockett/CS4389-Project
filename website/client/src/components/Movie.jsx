@@ -2,7 +2,9 @@
 
 import './Movie.css'; 
 
+
 const Movie = ({ title, image }) => {
+ 
   return (
     <div className="movie-container">
       <img className="movie-image" src={image} alt={title} />
