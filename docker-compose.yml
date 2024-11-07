@@ -2,7 +2,7 @@ services:
   server:
     build: ./website/server
     ports:
-      - 5001:3001
+      - 3000:3001
 
   database:
     build: ./Database
@@ -12,3 +12,11 @@ services:
     ports:
       - 5000:5173
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: unless-stopped
+    ports:
+      - 8001:80
+    environment:
+      - PMA_HOST=database
+      - PMA_PORT=3306
