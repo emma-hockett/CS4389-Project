@@ -28,6 +28,7 @@ CS 4389 : Data and Application Security Project Repository
 ```
 cd website
 cd server
+npm install
 npm start
 ```
 
@@ -35,6 +36,7 @@ npm start
 ```
 cd website
 cd client
+npm install
 npm run build
 npm run dev
 ```
