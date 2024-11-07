@@ -83,6 +83,7 @@ const styles = {
     },
     movieImage: {
       width: '100%',
+      borderRadius: '8px',
       height: 'auto',
     },
   }; 

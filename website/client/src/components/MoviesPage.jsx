@@ -3,8 +3,6 @@ import {useState} from "react"
 import { useNavigate } from 'react-router-dom'
 
 
-
-
 const movies = [
     { id: 'tt0111161', genre: "drama", title: 'The Shawshank Redemption', director: "Frank Darabont", year: 1994, price: 14.99, rating: 9.3, img: 'https://tinyurl.com/2p9jtrpp' },
     { id: 'tt0068646', genre: "crime", title: 'The Godfather', director: "Francis Ford Coppola", year: 1972, price: 16.99, rating: 9.2, img: 'https://tinyurl.com/3yypb7c4' },
@@ -36,6 +34,7 @@ const movies = [
     },
   };
   
+
   const MoviePage = () => {
     const [filteredResults, setFilteredResults] = useState(movies); // Use movies array initially
     const [searchInput, setSearchInput] = useState("");
