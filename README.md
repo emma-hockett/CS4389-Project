@@ -1,14 +1,14 @@
 # CS4389-Project
 CS 4389 : Data and Applicatio Security Project Repository
 
-#Set up
+## Set up
 
 - Start a Docker Daemon. If you do not already have it installed, the program can be found here: https://docs.docker.com/engine/install/
 
 - Run the following command in the project directory:
 >Docker compose up --build
 
-##Access points
+### Access points
 
 - The client-side app will be accessible at localhost:5000
 - The server will be accessible at localhost:3000
