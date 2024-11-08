@@ -24,6 +24,8 @@ CS 4389 : Data and Application Security Project Repository
     >quit
 
 ## RUNNING THE WEBSITE
+Download Node from this <a href="https://nodejs.org/en"> website </a> and add it to your system's PATH environment variable.
+
 1. Open one terminal and perform the sequence of commands:
 ```
 cd website
