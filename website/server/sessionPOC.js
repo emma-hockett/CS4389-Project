@@ -1,13 +1,23 @@
 //proof of concept for express-session for login
 const express = require('express');
 const session = require('express-session');
+const http = require('http');
 const app = express();
 const port = 3000;
+var cors=require('cors');
+
+
+app.use((req, res, next) => {
+	console.log('setting headers');
+	res.setHeader('Access-Control-Allow-Origin','http://localhost:5000');
+	next();
+});
+app.use(cors())
 
 // Body parsing middleware (for form submissions)
 app.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
 app.use(express.json()); // For parsing application/json
-
+/*
 // Setup session middleware
 app.use(session({
     secret: 'your-secret-key',
@@ -28,6 +38,18 @@ const checkSession = (req, res, next) => {
         res.redirect('/login');
     }
 };
+*/
+
+// Example route: Get data from the server
+app.get('/', (req, res) => {
+    res.status(200).send({message: "welcome!"})
+})
+
+
+// // Wildcard route to serve React frontend for unknown paths
+// app.use('*', (req, res) => {
+//   res.sendFile(__dirname + '/client/build/index.html'); // Ensure React is built
+// });
 
 // Route to serve the login page
 app.get('/login', (req, res) => {
@@ -38,20 +60,18 @@ app.get('/login', (req, res) => {
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
-    if (username === 'user' && password === 'password') {
-        req.session.username = username;
-        req.session.lastActivity = Date.now();
-        res.redirect('/dashboard');
+    if (username === 'user@user' && password === 'password') {
+	res.send("Success");
     } else {
-        res.send('Invalid login credentials');
+        res.send('Invalid login credentials\n');
     }
 });
 
-// Protected dashboard route
+/*// Protected dashboard route
 app.get('/dashboard', checkSession, (req, res) => {
     res.send(`Welcome to your dashboard, ${req.session.username}!`);
 });
-
+*/
 // Start the server
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);

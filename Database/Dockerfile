@@ -5,6 +5,6 @@ ENV MYSQL_USER=oshi
 ENV MYSQL_PASSWORD=uruka
 ENV MYSQL_DATABASE=CubeBuster
 
-COPY SQLFiles/create.sql /docker-entrypoint-initdb.d
+COPY SQLFiles/INIT.sql /docker-entrypoint-initdb.d
 COPY SQLFiles/* .
 

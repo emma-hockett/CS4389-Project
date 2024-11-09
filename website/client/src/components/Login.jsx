@@ -16,15 +16,25 @@ const Login = () => {
   
       try {
         // Replace with your actual API endpoint
-        const response = await axios.post('/api/auth/login', { email, password });
-        if (response.data.success) {
-          setStep(2); // Move to OTP step
+	const username = email;
+	const response = await axios.post('http://localhost:3000/login', { username, password });
+	console.log(response)
+        if (response.data=='Success') {
+	  alert('Login successful. Please complete 2FA procedures.');
+		setStep(2);
         } else {
           setError('Invalid credentials');
         }
       } catch (err) {
-        setError(err);
-        // setError('Login failed!');
+	      if (err.response) {
+		      console.log('Error response:', err.response);
+	      } else if (error.request) {
+		      console.log('Error request:', err.request);
+	      }
+	      console.log('Error message:', err.message);
+	      
+	      console.log(err)
+	      setError(err)
       }
     };
   
@@ -34,7 +44,7 @@ const Login = () => {
   
       try {
         // Replace with your actual API endpoint
-        const response = await axios.post('/api/auth/verify-otp', { email, otp });
+        const response = await axios.post('/api/verify-otp', { email, otp });
         if (response.data.success) {
           alert('Logged in successfully!');
           // Redirect to dashboard or main app
@@ -42,8 +52,8 @@ const Login = () => {
           setError('Invalid OTP');
         }
       } catch (err) {
-        // setError('Verification failed');
-        setError(err);
+        setError('Verification failed');
+        // setError(err);
       }
     };
   
