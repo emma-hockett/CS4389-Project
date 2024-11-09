@@ -4,6 +4,7 @@ import axios from "axios"
 import "./Login.css"
 
 const Login = () => {
+	var fails = 0;
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [otp, setOtp] = useState('');
@@ -44,12 +45,18 @@ const Login = () => {
   
       try {
         // Replace with your actual API endpoint
-        const response = await axios.post('/api/verify-otp', { email, otp });
+        const response = await axios.post('http://localhost:3000/otp', { email, otp });
         if (response.data.success) {
           alert('Logged in successfully!');
           // Redirect to dashboard or main app
         } else {
           setError('Invalid OTP');
+		if (fails >= 3){
+			alert('Too many invalid attempts. Redirecting to login page');
+			setStep(1);
+		} else {
+			fail+=1;
+		}
         }
       } catch (err) {
         setError('Verification failed');

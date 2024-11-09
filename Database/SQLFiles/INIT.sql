@@ -261,32 +261,22 @@ user_info:BEGIN
 
 END //
 
--- Procedure to verify user-input email against stored email
--- Inputs: email (user-input)
--- Outputs: Message: 'Success' or the condition that was not met
-CREATE PROCEDURE verifyEmail (
-	IN u_email varchar(20),
-	OUT status_message char(100))
-email_check:BEGIN
-    IF EXISTS (SELECT Email FROM Customer WHERE Email = u_email) THEN
-        SET status_message = 'Success.';
-    ELSE
-        SET status_message = 'Email not found.';
-    END IF;
-END //
-
--- Procedure to verify user-input password against stored password
--- Input: user input password
--- output: message on whether password matches.
-CREATE PROCEDURE verifyPassword(
-	IN u_password varchar(20),
-	OUT status_message char(100))
-password_check:BEGIN
-    IF EXISTS (SELECT userpswd FROM Customer WHERE userpswd = u_password) THEN
-        SET status_message = 'Success!';
-    ELSE
-        SET status_message = 'Incorrect Password. Try again.';
-    END IF;
+CREATE PROCEDURE veirfyLogin(
+	IN u_email varchar(20), u_pwd char(64),
+	OUT status_message boolean, employee boolean)
+verifyLogin:BEGIN
+IF EXISTS (SELECT userpswd, Email FROM Customer WHERE Email = u_email and userpswd = u_pwd) THEN
+	SET status_message = True;
+        SET employee = False;
+ELSE
+	IF EXISTS (SELECT Email, empPassword FROM Employee WHERE Email = u_email and empPassword = u_pwd) THEN
+		SET status_message = True;
+	       	SET employee=True;
+	ELSE
+		SET status_message = False;
+		SET employee=False;
+	End IF;
+END IF;
 END //
 
 DELIMITER ;
