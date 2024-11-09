@@ -21,7 +21,7 @@ CREATE TABLE Employee (
         SSN char(9) NOT NULL UNIQUE,
         Email varchar(25) NOT NULL UNIQUE, 
         Phone char(10) NOT NULL,
-        empPassword varchar(20) NOT NULL,
+        empPassword varchar(64) NOT NULL,
         PRIMARY KEY(EmployeeID)
 );
 
@@ -33,7 +33,7 @@ CREATE TABLE Customer (
         CCNum char(16),
         Bday date NOT NULL,
         Email varchar(25) NOT NULL UNIQUE,
-        userpswd varchar(20) NOT NULL,
+        userpswd char(64) NOT NULL,
 		PRIMARY KEY(cID)
 );
 
@@ -92,6 +92,14 @@ CREATE TABLE SessionTokens (
 	FOREIGN KEY (employeeID) REFERENCES Customer(cID)
 );
 
+INSERT INTO Customer (username, Address, CCNum, Bday, Email, userpswd)
+VALUES
+('johnSmith', '1240 Arroyo Vista', '1234567890987654','1995-10-13', 'khlkeeton@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8'),
+('janeDoe', '1600 Pennsylvania Ave', '9876543210123456', '1953-4-13', 'kylekeeton04@gmail.com', '76c974bbd9a8e3a8b838feec55c7b08b41a1c80e9495f18f66dbb24eb42ff753');
+
+INSERT INTO Employee (empName, Address, SSN, Email, empPassword,phone)
+VALUES
+('johnDoe', '1240 Arroyo Vista', '123456789','kylekeeton2004@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8','1234567890');
 
 INSERT INTO Movie (MovieID, Title, movieYear, Genre, Director, Price, PGRating, Rating, Duration, ImageAddress)
 VALUES
