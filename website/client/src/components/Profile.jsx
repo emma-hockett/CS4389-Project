@@ -3,27 +3,27 @@
 // import editButton from '../assets/editButton.png'
 import './Profile.css'
 
-function Profile() {
-	
-//   const [editing, setEditing] = useState(false)
-  const user = "John Doe"
-	const address = "420 idk ln."
-	const SSN = "123 45 6789"
-	const email = "johndoe@gmail.com"
-	const phone = "123 456 7890"
-	// const queryString = window.location.search;
-	// const handleEditing = () => {
-	// 	setEditing(true)
-	// }
-	// const urlParams = new URLSearchParams(queryString)
-	// const perms = urlParams.get('perms')
-	let viewMode = {}
-	// let editMode = {}
-	// if (editing){
-	// 	viewMode.display = 'none';
-	// } else {
-	// 	editMode.display = 'none'
-	// }
+const Profile = async () => {
+	function readCookie(name) {
+                var nameEQ = name + "=";
+                var cookie = document.cookie.split(';');
+                for(var i = 0; i < cookie.length; i++){
+                        var c = cookie[i];
+                        while (c.charAt(0) == ' ') c = c.substring(1,c.length);
+                        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null
+        }
+	try{
+
+		const cookie = readCookie('cubeBusterSession');
+		const response = await axios.post('http://localhost:3000/profile', {cookie})
+		const address = response.address
+
+
+		} catch (e) {
+			console.log(error)
+		}
 		
 
   return (

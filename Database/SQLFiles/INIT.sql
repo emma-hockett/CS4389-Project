@@ -21,7 +21,7 @@ CREATE TABLE Employee (
         SSN char(9) NOT NULL UNIQUE,
         Email varchar(25) NOT NULL UNIQUE, 
         Phone char(10) NOT NULL,
-        empPassword varchar(64) NOT NULL,
+        empPassword char(64) NOT NULL,
         PRIMARY KEY(EmployeeID)
 );
 
@@ -83,10 +83,13 @@ CREATE TABLE InStock (
 
 CREATE TABLE SessionTokens (
 	TokenID char(30) NOT NULL,
+	otp char(4),
 	lastAccess datetime,
 	userID int,
 	employeeID int,
 	employeeAccess boolean,
+	complete2FA boolean,
+	incorrectAttempts int,
 	PRIMARY KEY (TokenID),
 	FOREIGN KEY (userID) REFERENCES Customer(cID),
 	FOREIGN KEY (employeeID) REFERENCES Customer(cID)
@@ -252,31 +255,43 @@ END //
 -- Inputs: userID
 -- Outputs: username, address, birthday, email
 CREATE PROCEDURE get_user (
-	IN custID int)
+	IN email varchar(25))
 user_info:BEGIN
 
-    SELECT username, address, Bday, Email
-    FROM Costomer
-    WHERE cID = custID;
+    SELECT cID
+    FROM Customer
+    WHERE Email = email;
 
 END //
 
-CREATE PROCEDURE veirfyLogin(
-	IN u_email varchar(20), u_pwd char(64),
-	OUT status_message boolean, employee boolean)
+CREATE PROCEDURE get_employee (
+	IN email varchar(25))
+user_info:BEGIN
+
+    SELECT EmployeeID
+    FROM Employee
+    WHERE Email = email;
+
+END //
+
+CREATE PROCEDURE verifyLogin(
+	IN u_email varchar(25), IN u_pwd char(64))
 verifyLogin:BEGIN
+SET @Success = False;
+SET @Employee = False;
 IF EXISTS (SELECT userpswd, Email FROM Customer WHERE Email = u_email and userpswd = u_pwd) THEN
-	SET status_message = True;
-        SET employee = False;
+	SET @Success = True;
+	SET @Employee = False;
 ELSE
 	IF EXISTS (SELECT Email, empPassword FROM Employee WHERE Email = u_email and empPassword = u_pwd) THEN
-		SET status_message = True;
-	       	SET employee=True;
+		SET @Success = True;
+		SET @Employee = True;
 	ELSE
-		SET status_message = False;
-		SET employee=False;
+		SET @Success = False;
+		SET @Employee = False;
 	End IF;
 END IF;
+SELECT @Success, @Employee;
 END //
 
 DELIMITER ;

@@ -84,26 +84,6 @@ function RentPage() {
         <h2>Pickup Request</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Name:</label>
-            <input
-              type="text"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label>Email:</label>
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              required
-            />
-  </div>
-          <div className="form-group">
             <label>Pickup Date:</label>
             <input
               type="date"

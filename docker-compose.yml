@@ -3,6 +3,8 @@ services:
     build: ./website/server
     ports:
       - 3000:3000
+    depends_on:
+      - database
 
   database:
     build: ./Database
