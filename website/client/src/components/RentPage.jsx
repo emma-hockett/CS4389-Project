@@ -1,13 +1,12 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-// import emailjs from '@emailjs/browser'; 
+import axios from 'axios'
+import emailjs from '@emailjs/browser'; 
 import './RentPage.css'; 
-// const service_id = import.meta.env.VITE_SERVICE_ID;
-// const template_id = import.meta.env.VITE_TEMPLATE_ID;
-// const public_key = import.meta.env.VITE_PUBLIC_KEY;
-
-
+const service_id = import.meta.env.VITE_SERVICE_ID;
+const template_id = import.meta.env.VITE_TEMPLATE_ID;
+const public_key = import.meta.env.VITE_PUBLIC_KEY;
 
 
 function RentPage() {
@@ -30,37 +29,39 @@ function RentPage() {
     setForm({ ...form, [name]: value });
   };
 
+  
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
     // Prepare email parameters
-    // const emailParams = {
-    //   name: form.name,
-    //   email: form.email,
-    //   date: form.date,
-    //   time: form.time,
-    //   title: title,
-    //   price: price
-    // };
+    const emailParams = {
+      name: form.name,
+      email: form.email,
+      date: form.date,
+      time: form.time,
+      title: title,
+      price: price
+    };
 
-    // // Send email using EmailJS
-    // emailjs
-    //   .send(
-    //     service_id,  // Replace with your service ID
-    //     template_id, // Replace with your template ID
-    //     emailParams,
-    //     public_key   // Replace with your public key
-    //   )
-    //   .then(
-    //     (response) => {
-    //       console.log('Email sent successfully!', response.status, response.text);
-    //       alert(`Thank you, ${form.name}! Your movie is reserved for pickup on ${form.date} at ${form.time}.`);
-    //     },
-    //     (error) => {
-    //       console.error('Failed to send email:', error);
-    //       alert('Sorry, something went wrong. Please try again later.');
-    //     }
-    //   );
+    // Send email using EmailJS
+    emailjs
+      .send(
+        service_id, 
+        template_id, 
+        emailParams,
+        public_key   
+      )
+      .then(
+        (response) => {
+          console.log('Email sent successfully!', response.status, response.text);
+          alert(`Thank you, ${form.name}! Your movie is reserved for pickup on ${form.date} at ${form.time}.`);
+        },
+        (error) => {
+          console.error('Failed to send email:', error);
+          alert('Sorry, something went wrong. Please try again later.');
+        }
+      );
 
     // Reset form fields
     setForm({ name: '', email: '', date: '', time: '' });
@@ -81,7 +82,7 @@ function RentPage() {
   return (
     <div className="movie-page">
       <div className="form-section">
-        <h2>Pickup Request</h2>
+        <h2 className="req-title">Movie Request</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Name:</label>
@@ -143,7 +144,7 @@ function RentPage() {
           className="movie-poster"
         />
         <div className="movie-details">
-          <h1>{title}</h1>
+          <h1 className="mov-title">{title}</h1>
           <p><strong>Genre:</strong> {genre}</p>
           <p><strong>Year:</strong> {year}</p>
           <p><strong>Rating:</strong> {rating}/10</p>

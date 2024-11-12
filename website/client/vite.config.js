@@ -11,12 +11,13 @@ export default defineConfig({
   },
   server: {
     https: true,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3001', // Proxy API requests to your Express server
-        changeOrigin: true, // Change the origin of the host header to the target URL
-        rewrite: (path) => path.replace(/^\/api/, '') // Rewrite the URL path
-      }
-    }
+    // proxy: {
+    //   '/': {
+    //     target: 'http://localhost:3001', // Proxy API requests to your Express server
+    //     // changeOrigin: true, // Change the origin of the host header to the target URL
+    //     // secure: false
+    //     // rewrite: (path) => path.replace(/^\/api/, '') // Rewrite the URL path
+    //   }
+    // }
   }
 });

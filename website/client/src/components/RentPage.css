@@ -2,6 +2,13 @@
 div{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+.req-title, form{
+  color: black;
+}
+
+.mov-title{
+  color: white
+}
 .movie-page {
     display: flex;
     justify-content: space-between;
@@ -83,4 +90,3 @@ div{
   .movie-details h1 {
     margin-bottom: 10px;
   }
-  
