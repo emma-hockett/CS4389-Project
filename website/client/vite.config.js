@@ -2,6 +2,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import mkcert from 'vite-plugin-mkcert';
+import fs from 'fs';
 
 export default defineConfig({
   plugins: [react(), mkcert()],
@@ -10,7 +11,10 @@ export default defineConfig({
     emptyOutDir: true // Clear the output directory before each build
   },
   server: {
-    https: true,
+	  https:{
+		  key: '.cert/key.pem',
+		  cert: '.cert/key.pem'
+	  }
     // proxy: {
     //   '/': {
     //     target: 'http://localhost:3001', // Proxy API requests to your Express server

@@ -2,6 +2,8 @@
 import {useState} from "react"
 import axios from "axios"
 import "./Login.css"
+import { useNavigate } from 'react-router-dom'
+import logo from "./Cubebuster-Logo-1996.png"
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -62,7 +64,7 @@ const Login = () => {
         if (response.data == 'Success') {
           alert('Logged in successfully!');
           // Redirect to dashboard or main app
-	  location.href = '/'
+	  location.href = '/home'
         } else {
           setError('Invalid OTP');
         }
