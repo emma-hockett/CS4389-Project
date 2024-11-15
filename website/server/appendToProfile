@@ -1,0 +1,5 @@
+if [ -n "$SSH_CLIENT" ]; then
+    TEXT="SSH Login date $(date): ssh login to ${USER}@$(hostname -f)"
+    TEXT="$TEXT from $(echo $SSH_CLIENT|awk '{print $1}')"
+    echo -e "Subject: SSH Login\n\n${TEXT}" | msmtp recipient_email@gmail.com
+fi

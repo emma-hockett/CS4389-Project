@@ -1,46 +1,38 @@
 # CS4389-Project
-CS 4389 : Data and Application Security Project Repository
 
-## SETTING UP THE DATABASE 
-**Disclaimer:** You may have to change your backslashes to forward slashes for MySQL to not throw a fit + make sure your path uses single quotes instead of double quotes  
-- You can install MySQL from here: https://dev.mysql.com/downloads/mysql/
--  Run with all default settings, make sure to uncheck the start database on computer startup, don't create new users, set the root password to "password"
-- You can add the directory to your mysql installation bin folder to your PATH variable to be able to run these commands
-- If you don't already have the database process running, start it by going to the project directory with the SQL files, and enter the commands into the cmd prompt  
-   >mysql -u root -p --local-infile=1  
-   >SET GLOBAL local_infile = 1;
-   
-- Once in, you will have to use SOURCE to load the sql files, I have created an INIT file which will load them all for you, but you have to change the directories in the file yourself.  
-    Type this into the cmd line:
-    >SOURCE ./Your Directory Here/INIT.SQL;  
-    The DB is now ready for local editing!
+CS 4389 : Data and Applicatio Security Project Repository
 
+## Set up
 
-### Additional Details 
-- If you'd like to see tables in MySQL, make a new sql file and type the following, replacing 'Tablename' with the desired table name:  
-    >USE cubebuster;  
-    >SELECT * FROM Tablename;
-- You can stop the database by typing this into cmd line  
-    >quit
+- Start a Docker Daemon. If you do not already have it installed, the program can be found here: https://docs.docker.com/engine/install/
 
-## RUNNING THE WEBSITE
-Download Node from this <a href="https://nodejs.org/en"> website </a> and add it to your system's PATH environment variable.
+- Run the following command in the project directory:
+>Docker compose up --build
 
-1. Open one terminal and perform the sequence of commands:
-```
-cd website
-cd server
-npm install
-npm start
-```
+### Access points
 
-2.  Open a second terminal and perform the sequence of commands:
-```
-cd website
-cd client
-npm install
-npm run build
-npm run dev
-```
+- The client-side app will be accessible at localhost:5000
+- The server will be accessible at localhost:3000
+- A viewing method for the database can be seen at localhost:8001
+	- username: root
+	- password: password
+	- The database will be the CubeBuster tab in the side bar.
+	- this representation was created using the phpMyAdmin official image.
+	- This service would not be avilable in a real-world application of the site. It serves to simplify debugging and ease of the grader.
+- In addition, this table can be used to edit table data.
+	- Please change the email address for existing entries here. 2FA will send to the address dictated by that table entry.
 
-3. Copy and paste the local host link given in your browser to view the website.
+### Important Info
+
+- There are only 2 users in the customer database.
+	- The user johnSmith has the email khlkeeton@gmail.com. His password is 'password'.
+	- The user janeDoe has the email kylekeeton04@gmail.com. Her password is 'better password'.
+	- New users can be added in the phpMyAdmin site (located at localhost:8001).
+	- NOTE: 2FA means a new user has to be added to test the program.
+	- NOTE: The database uses sha256 hashing to store passwords. Therefore, any password must be encrypted with this style.
+
+- There is only 1 employee in the datbase
+	- The user, johnDoe has the email address kylekeeton2004@gmail.com. His password is password.
+	- New users can be added in the phpMyAdmin site (located at localhost:8001).
+	- NOTE: 2FA means a new user has to be added to test the program.
+	- NOTE: The database uses sha256 hashing to store passwords. Therefore, any password must be encrypted with this style.

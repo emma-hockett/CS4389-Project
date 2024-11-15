@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const NotFound = () => {
+  console.log("404 ERROR")
   return (
     <div style={styles.container}>
       <h1 style={styles.header}>404</h1>

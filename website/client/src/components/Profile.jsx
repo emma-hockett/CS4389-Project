@@ -1,15 +1,14 @@
 // import { useState } from 'react'
 // import userProfile from '../assets/default-avatar.png'
 // import editButton from '../assets/editButton.png'
-// import './App.css'
+import './Profile.css'
 
 function Profile() {
 	
 //   const [editing, setEditing] = useState(false)
   const user = "John Doe"
-	const address = "420 idk ln."
-	const SSN = "123 45 6789"
-	const email = "johndoe@gmail.com"
+	const address = "420 Laney Lane"
+	const email = "cube3148@gmail.com"
 	const phone = "123 456 7890"
 	// const queryString = window.location.search;
 	// const handleEditing = () => {
