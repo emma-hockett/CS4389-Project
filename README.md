@@ -4,6 +4,8 @@ CS 4389 : Data and Applicatio Security Project Repository
 
 ## Set up
 
+- Replace the .msmtprc file located in /website/server/ with your own .msmtprc file. This contains an API key that cannot be published to GitHub.
+
 - Start a Docker Daemon. If you do not already have it installed, the program can be found here: https://docs.docker.com/engine/install/
 
 - Run the following command in the project directory:
