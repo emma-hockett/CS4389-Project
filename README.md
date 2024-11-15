@@ -13,9 +13,9 @@ CS 4389 : Data and Applicatio Security Project Repository
 
 ### Access points
 
-- The client-side app will be accessible at localhost:5000
+- The client-side app will be accessible at https://localhost:5000
 - The server will be accessible at localhost:3000
-- A viewing method for the database can be seen at localhost:8001
+- A viewing method for the database can be seen at http://localhost:8001
 	- username: root
 	- password: password
 	- The database will be the CubeBuster tab in the side bar.
