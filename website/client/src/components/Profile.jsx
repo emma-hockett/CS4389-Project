@@ -10,6 +10,7 @@ function Profile() {
 	const address = "420 Laney Lane"
 	const email = "cube3148@gmail.com"
 	const phone = "123 456 7890"
+	const SSN = "123 45 6789"
 	// const queryString = window.location.search;
 	// const handleEditing = () => {
 	// 	setEditing(true)
